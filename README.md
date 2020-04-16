@@ -37,7 +37,6 @@
 
 ```
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i("LifeCycle", "Main OnCreate called")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val lvMenu = findViewById<ListView>(R.id.lvMenu)
