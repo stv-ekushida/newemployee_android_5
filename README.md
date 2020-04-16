@@ -1,6 +1,39 @@
 # newemployee_android_5
 リストビューとダイアログ
 
+## リストビュー
+### ArrayAdapterを利用した例
+
+```
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val lvMenu = findViewById<ListView>(R.id.lvMenu)
+
+        val menuList = mutableListOf<String>("唐揚げ定食","ハンバーク定食","生姜焼き定食",
+            "ステーキ定食","野菜炒め定食")
+
+        //リストビューとリストデータを結びつけるアダプタークラス
+        val adapter = ArrayAdapter(applicationContext,
+            android.R.layout.simple_list_item_1,
+            menuList)
+        lvMenu.adapter = adapter
+
+        lvMenu.onItemClickListener = ListItemClickLister()
+    }
+
+    private  inner class ListItemClickLister: AdapterView.OnItemClickListener {
+        override fun onItemClick(parent: AdapterView<*>, view: View, postion: Int, id: Long) {
+
+            val dialogFragment = OrderConfirmDialogFragment()
+
+            dialogFragment.show(supportFragmentManager, "OrderConfirmDialogFragmentd")
+        }
+    }
+```
+
+
 ## ダイアログ
 
 ### ダイアログの表示
